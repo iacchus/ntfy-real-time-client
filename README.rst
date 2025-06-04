@@ -48,6 +48,8 @@
 THIS IS NOT READY YET
 ===============================
 
+https://github.com/iacchus/python-pushover-open-client/blob/main/src/python_pushover_open_client/__init__.py
+
 Command line app and framework for receiving and processing NTFY push notifications in real time.
 
 .. _pyscaffold-notes:

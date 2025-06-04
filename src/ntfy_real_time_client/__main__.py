@@ -1,7 +1,8 @@
 import click
 
 from . import register_parser
-from . import PushoverOpenClient, PushoverOpenClientRealTime
+#  from . import PushoverOpenClient, PushoverOpenClientRealTime
+from . import NTFYClientRealTime
 
 @click.group
 def cli():
@@ -18,7 +19,7 @@ def json():
 
         #return json_notification
 
-    client = PushoverOpenClientRealTime()
+    client = NTFYClientRealTime()
     client.run_forever()
 
 

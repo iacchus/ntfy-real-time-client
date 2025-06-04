@@ -89,7 +89,9 @@ These execute shell commands, from the allowed list.
 # when the alias is received, it executes command and args
 # { "alias": ["command", "arg1", "arg2", ...] }
 # SHELL_COMMAND_ALIASES_REGISTRY: dict[str, str | list] = dict()
-SHELL_COMMAND_ALIASES_REGISTRY: dict[str, list] = dict()
+SHELL_COMMAND_ALIASES_REGISTRY: dict[str, str | list] = dict()
+#  SHELL_COMMAND_ALIASES_REGISTRY: dict[str, list[str]] = dict()
+#  SHELL_COMMAND_ALIASES_REGISTRY: dict[str, list[str]] = dict()
 
 # TODO: improve decorators typing annotations
 def register_command(f: FUNCTION, *args, **kwargs) -> FUNCTION:
@@ -248,7 +250,7 @@ def register_shell_command_alias(alias: str, command_line: str | list) -> None:
 
 
 
-class NTFYOpenClientRealTime:
+class NTFYClientRealTime:
 
     ntfy_websocket_server_commands = dict()
 
@@ -256,7 +258,7 @@ class NTFYOpenClientRealTime:
     #               pushover_websocket_server_url: str =
     #               PUSHOVER_WEBSOCKET_SERVER_URL) -> None:
     def __init__(self, ntfy_websocket_server_url: str =
-                 PUSHOVER_WEBSOCKET_SERVER_URL) -> None:
+                 NTFY_WEBSOCKET_SERVER_URL) -> None:
         """Connects to the Pushover's websocket server to do stuff.
 
          Opens a websocket connection with the Pushover's websocket server and

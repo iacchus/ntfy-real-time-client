@@ -42,7 +42,10 @@
 
 |
 
-``python-pushover-open-client``
+``python-ntfy-real-time-client``
+===============================
+
+THIS IS NOT READY YET
 ===============================
 
 Command line app and framework for receiving and processing Pushover push notifications in real time.
@@ -65,7 +68,7 @@ Installing
 
 ::
 
-    pip install python-pushover-open-client
+    pip install python-ntfy-real-time-client
 
 **Python minimum version 3.10** is needed. *(because of the `|` union
 annotations.)*

@@ -146,12 +146,13 @@ file: ``notify.py``
     def my_print_parser(raw_data=None):
         print("MESSAGE RECEIVED:", raw_data)
 
-    # this instantiates the Pushover websocket class and runs it:
+    # this instantiates the NTFY websocket class and runs it
     client = NTFYClientRealTime()
     client.run_forever()
 
 You can save the script above to a file (*eg*. ``~/notify.py``), then make it
-executable and run, after you have `installed the package`_  and `entered your Pushover credentials`_:
+executable and run, after you have `installed the package`_  and
+`entered your NTFY credentials`_:
 
 .. code:: sh
 
@@ -235,7 +236,7 @@ notifications.
 The two classes are ``ntfy_real_time_client.PushoverOpenClient`` and
 ``ntfy_real_time_client.NTFYClientRealTime``. The first manages
 credentials, authentication, device registration, message downloading,
-message deletion etc, like specified by the `Pushover Open Client API
+message deletion etc, like specified by the `NTFY API
 documentation`_, and is consumed by the second class. The second class connects
 to the Pushover's websocket server with the given credentials (``secret`` and
 ``device_id``) and keep the connection open, receiving messages and executing
@@ -278,5 +279,5 @@ information on PyScaffold see https://pyscaffold.org/.
 .. _His whole interface is here: https://github.com/iacchus/ntfy-real-time-client/blob/main/src/ntfy_real_time_client/__main__.py
 .. _installed the package: https://github.com/iacchus/ntfy-real-time-client#installing
 .. _entered your Pushover credentials: https://github.com/iacchus/ntfy-real-time-client#setting-up
-.. _Pushover Open Client API documentation: https://pushover.net/api/client
+.. _NTFY API documentation: https://pushover.net/api/client
 .. _Pushover website: https://pushover.net

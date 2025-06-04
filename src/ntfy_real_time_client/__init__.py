@@ -255,7 +255,7 @@ def get_notification_model(**kwargs) -> dict[str, str | int]:
     to be processed as such.
 
     The description of these keys are on the API documentation at:
-    https://pushover.net/api/client#download
+        MOREINFO NEEDED HERE
 
     Args:
         **kwargs (dict): A dict/expanded dict of the received values from the
@@ -458,7 +458,6 @@ class NTFYClientRealTime:
 
         if DEBUG:
             print(message)
-            #  print(message, PUSHOVER_WEBSOCKET_SERVER_MESSAGES_MEANING[message])
 
     def _on_error(self, websocketapp: websocket.WebSocketApp,
                   exception: Exception) -> None:

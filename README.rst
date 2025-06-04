@@ -42,7 +42,7 @@
 
 |
 
-``python-ntfy-real-time-client``
+``ntfy-real-time-client``
 ===============================
 
 THIS IS NOT READY YET

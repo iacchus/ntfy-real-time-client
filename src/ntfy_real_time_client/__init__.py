@@ -44,8 +44,6 @@ except PackageNotFoundError:  # pragma: no cover
 finally:
     del version, PackageNotFoundError
 
-#  PUSHOVER_API_URL: str = "https://api.pushover.net/1"
-
 NTFY_SERVER_HOSTNAME: str | None = os.environ.get("NTFY_SERVER_HOSTNAME")
 NTFY_TOPIC: str | None = os.environ.get("NTFY_TOPIC")
 NTFY_URL_WSS: str = f"wss://{NTFY_SERVER_HOSTNAME}/{NTFY_TOPIC}/ws"

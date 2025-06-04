@@ -49,12 +49,6 @@ NTFY_TOPIC: str | None = os.environ.get("NTFY_TOPIC")
 NTFY_URL_WSS: str = f"wss://{NTFY_SERVER_HOSTNAME}/{NTFY_TOPIC}/ws"
 NTFY_TOKEN = os.environ.get('NTFY_TOKEN', default="")
 
-#  NTFY_WEBSOCKET_SERVER_URL: str = "wss://{hostname}/{topic}/ws"
-#  PUSHOVER_WEBSOCKET_SERVER_URL: str = "wss://client.pushover.net/push"
-#  PUSHOVER_WEBSOCKET_LOGIN: str = "login:{device_id}:{secret}\n"
-
-#  CREDENTIALS_FILENAME: str = os.path.expanduser("~/.ntfy-real-time-client-creds.json")
-
 COMMAND_FUNCTIONS_REGISTRY: dict[str, FUNCTION] = dict()
 """Registry for command functions.
 
@@ -72,7 +66,7 @@ Todo:
 
 COMMAND_PARSERS_REGISTRY: dict[str, FUNCTION] = dict()
 """
-these parsers receive `raw_data` from the Pushover server. They are
+these parsers receive `raw_data` from the NTFY server. They are
 triggered if the first word (ie., the command) of the notification message
 is the name of the function.
 """
@@ -204,85 +198,111 @@ def register_shell_command_alias(alias: str, command_line: str | list) -> None:
     SHELL_COMMAND_ALIASES_REGISTRY.update({processed_alias: command_line})
 
 
-#  def get_notification_model(**kwargs) -> dict[str, str | int]:
-#      """Makes a notification model.
-#
-#      We use this to have a notification model with all values that can be
-#      returned by the notification server initialized to None. If a value is
-#      lacking on the server response because it is empty, now we have it set
-#      to be processed as such.
-#
-#      The description of these keys are on the API documentation at:
-#      https://pushover.net/api/client#download
-#
-#      Args:
-#          **kwargs (dict): A dict/expanded dict of the received values from the
-#          notification server.
-#
-#      Returns:
-#          dict: The notification model dict with the notification values
-#          filled up.
-#      """
-#
-#      notification_dict =\
-#          {
-#              "id": None,
-#              "id_str": None,
-#              "umid": None,
-#              "umid_str": None,
-#              "title": None,
-#              "message": None,
-#              "app": None,
-#              "aid": None,
-#              "aid_str": None,
-#              "icon": None,
-#              "date": None,
-#              "queued_date": None,
-#              "dispatched_date": None,
-#              "priority": None,
-#              "sound": None,
-#              "url": None,
-#              "url_title": None,
-#              "acked": None,
-#              "receipt": None,
-#              "html": None,
-#          }
-#
-#      notification_dict.update(**kwargs)
-#
-#      return notification_dict
+def get_notification_model(**kwargs) -> dict[str, str | int]:
+    """Makes a notification model.
+
+    We use this to have a notification model with all values that can be
+    returned by the notification server initialized to None. If a value is
+    lacking on the server response because it is empty, now we have it set
+    to be processed as such.
+
+    The description of these keys are on the API documentation at:
+    https://pushover.net/api/client#download
+
+    Args:
+        **kwargs (dict): A dict/expanded dict of the received values from the
+        notification server.
+
+    Returns:
+        dict: The notification model dict with the notification values
+        filled up.
+    """
+
+    notification_dict =\
+        {
+            "id": None,
+            "time": None,
+            "expires": None,
+            "event": None,
+            "topic": None,
+            "title": None,
+            "message": None,
+            "priority": None,
+            "content_type": None,
+        }
+
+    notification_dict.update(**kwargs)
+
+    return notification_dict
+
+# ntfy model:
+# {"id":"zQD3TW9u9Me8","time":1749067961,"expires":1749111161,"event":"message","topic":"main","title":"teseting","message":"mdllll\n\nok\n\n*test*","priority":4,"content_type":"text/markdown"}
 
 
+def get_notification_model(**kwargs) -> dict[str, str | int]:
+    """Makes a notification model.
+
+    We use this to have a notification model with all values that can be
+    returned by the notification server initialized to None. If a value is
+    lacking on the server response because it is empty, now we have it set
+    to be processed as such.
+
+    The description of these keys are on the API documentation at:
+    https://pushover.net/api/client#download
+
+    Args:
+        **kwargs (dict): A dict/expanded dict of the received values from the
+        notification server.
+
+    Returns:
+        dict: The notification model dict with the notification values
+        filled up.
+    """
+
+    notification_dict =\
+        {
+            "id": None,
+            "id_str": None,
+            "umid": None,
+            "umid_str": None,
+            "title": None,
+            "message": None,
+            "app": None,
+            "aid": None,
+            "aid_str": None,
+            "icon": None,
+            "date": None,
+            "queued_date": None,
+            "dispatched_date": None,
+            "priority": None,
+            "sound": None,
+            "url": None,
+            "url_title": None,
+            "acked": None,
+            "receipt": None,
+            "html": None,
+        }
+
+    notification_dict.update(**kwargs)
+
+    return notification_dict
 
 class NTFYClientRealTime:
 
     ntfy_websocket_server_commands = dict()
 
-    #  def __init__(self, pushover_open_client: PushoverOpenClient = None,
-    #               pushover_websocket_server_url: str =
-    #               PUSHOVER_WEBSOCKET_SERVER_URL) -> None:
     def __init__(self,
                  ntfy_websocket_server_url: str = NTFY_URL_WSS,
                  ntfy_token: str = NTFY_TOKEN) -> None:
-        """Connects to the Pushover's websocket server to do stuff.
+        """Connects to the NTFY's websocket server to do stuff.
 
-         Opens a websocket connection with the Pushover's websocket server and
+         Opens a websocket connection with the NTFY's websocket server and
          handles it's websocket commands.
 
         Args:
-            pushover_open_client (PushoverOpenClient):
             ntfy_websocket_server_url (str, optional):
         """
 
-        #  if not pushover_open_client:
-        #      pushover_open_client =\
-        #          PushoverOpenClient().load_from_credentials_file()
-        #  self.pushover_open_client = pushover_open_client
-
-        #  self.pushover_websocket_login_string =\
-        #      pushover_open_client.get_websocket_login_string()
-
-        #  auth_header_bearer = f"Bearer {NTFY_AUTH_TOKEN}"
         auth_header_bearer = f"Bearer {ntfy_token}"
 
         headers = {
@@ -338,7 +358,7 @@ class NTFYClientRealTime:
         Args:
             function (Callable): Reference to the function to be executed for
                 this command. All notifications received have it's raw data,
-                as received by the Pushover server, passed to the functions
+                as received by the ntfy server, passed to the functions
                 registered via this method or it's
                 decorator, ``@register_parser``.
         """
@@ -426,17 +446,12 @@ class NTFYClientRealTime:
         self.websocketapp.run_forever()
 
     def _on_open(self, websocketapp: websocket.WebSocketApp) -> None:
-        #  pushover_websocket_login_string = self.pushover_websocket_login_string
-        #
-        #  self.send_login(pushover_websocket_connection=websocketapp,
-        #                  pushover_websocket_login_string=
-        #                  pushover_websocket_login_string)
         pass
 
     def _on_message(self, websocketapp: websocket.WebSocketApp,
                     message: bytes | str) -> None:
         if message in self.ntfy_websocket_server_commands:
-            self.pushover_websocket_server_commands[message]()
+            self.ntfy_websocket_server_commands[message]()
         #  if message in self.pushover_websocket_server_commands:
             #  self.pushover_websocket_server_commands[message]()
 

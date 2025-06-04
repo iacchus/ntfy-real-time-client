@@ -21,7 +21,8 @@ import websocket
 
 FUNCTION = types.FunctionType
 
-DEBUG: bool = False
+#  DEBUG: bool = False
+DEBUG: bool = True
 
 if DEBUG:
     websocket.enableTrace(True)
@@ -47,7 +48,9 @@ finally:
 
 NTFY_SERVER_HOSTNAME: str | None = os.environ.get("NTFY_SERVER_HOSTNAME")
 NTFY_TOPIC: str | None = os.environ.get("NTFY_TOPIC")
-NTFY_WEBSOCKET_SERVER_URL: str = "wss://{NTFY_SERVER_HOSTNAME}/{NTFY_TOPIC}/ws"
+NTFY_URL_WSS: str = f"wss://{NTFY_SERVER_HOSTNAME}/{NTFY_TOPIC}/ws"
+NTFY_TOKEN = os.environ.get('NTFY_TOKEN', default="")
+
 #  NTFY_WEBSOCKET_SERVER_URL: str = "wss://{hostname}/{topic}/ws"
 #  PUSHOVER_WEBSOCKET_SERVER_URL: str = "wss://client.pushover.net/push"
 #  PUSHOVER_WEBSOCKET_LOGIN: str = "login:{device_id}:{secret}\n"
@@ -260,8 +263,9 @@ class NTFYClientRealTime:
     #  def __init__(self, pushover_open_client: PushoverOpenClient = None,
     #               pushover_websocket_server_url: str =
     #               PUSHOVER_WEBSOCKET_SERVER_URL) -> None:
-    def __init__(self, ntfy_websocket_server_url: str =
-                 NTFY_WEBSOCKET_SERVER_URL) -> None:
+    def __init__(self,
+                 ntfy_websocket_server_url: str = NTFY_URL_WSS,
+                 ntfy_token: str = NTFY_TOKEN) -> None:
         """Connects to the Pushover's websocket server to do stuff.
 
          Opens a websocket connection with the Pushover's websocket server and
@@ -280,8 +284,20 @@ class NTFYClientRealTime:
         #  self.pushover_websocket_login_string =\
         #      pushover_open_client.get_websocket_login_string()
 
+        #  auth_header_bearer = f"Bearer {NTFY_AUTH_TOKEN}"
+        auth_header_bearer = f"Bearer {ntfy_token}"
+
+        print(ntfy_websocket_server_url, ntfy_token)
+
+        headers = {
+                #  "Authorization": f"Bearer {NTFY_TOKEN}",
+                #  "Authorization": f"Basic {auth_string_base64}",
+                "Authorization": auth_header_bearer,
+                }
+
         self.websocketapp =\
-            websocket.WebSocketApp(ntfy_websocket_server_url,
+            websocket.WebSocketApp(url=ntfy_websocket_server_url,
+                                   header=headers,
                                    on_open=self._on_open,
                                    on_message=self._on_message,
                                    on_error=self._on_error,
@@ -423,11 +439,14 @@ class NTFYClientRealTime:
 
     def _on_message(self, websocketapp: websocket.WebSocketApp,
                     message: bytes | str) -> None:
-        if message in self.pushover_websocket_server_commands:
+        if message in self.ntfy_websocket_server_commands:
             self.pushover_websocket_server_commands[message]()
+        #  if message in self.pushover_websocket_server_commands:
+            #  self.pushover_websocket_server_commands[message]()
 
         if DEBUG:
-            print(message, PUSHOVER_WEBSOCKET_SERVER_MESSAGES_MEANING[message])
+            print(message)
+            #  print(message, PUSHOVER_WEBSOCKET_SERVER_MESSAGES_MEANING[message])
 
     def _on_error(self, websocketapp: websocket.WebSocketApp,
                   exception: Exception) -> None:

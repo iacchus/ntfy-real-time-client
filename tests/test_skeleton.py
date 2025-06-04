@@ -1,6 +1,6 @@
 import pytest
 
-from python_pushover_open_client.skeleton import fib, main
+from ntfy_real_time_client.skeleton import fib, main
 
 __author__ = "I.M."
 __copyright__ = "I.M."

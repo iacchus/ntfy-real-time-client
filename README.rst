@@ -48,14 +48,14 @@
 THIS IS NOT READY YET
 ===============================
 
-Command line app and framework for receiving and processing Pushover push notifications in real time.
+Command line app and framework for receiving and processing NTFY push notifications in real time.
 
 .. _pyscaffold-notes:
 
 Features
 ========
 
-* Receive notifications real time via Pushover websocket server.
+* Receive notifications real time via NTFY websocket server.
 * Execute python funcions via commands received by notification, passing arguments as ``*args``.
 * Execute shell commands, passing arguments.
 * Execute python functions to all received notifications (*eg.*,. you can use 
@@ -76,23 +76,17 @@ annotations.)*
 Setting Up
 ==========
 
-The script expects a file at the home directory named
-``~/.pushover-open-client-creds.json``. The file should be a JSON file with 
-account's ``email`` and ``password``, this way:
 
-file: ``~/.pushover-open-client-creds.json``
+
+file: ``~/.zshrc``
 --------------------------------------------
 
 ::
 
-  {
-    "email": "USERS@EMAIL.ETC",
-    "password": "M4HSUP3RBPASS"
-  }
+  export NTFY_ENVVAR="value"
+  # soon
 
-Given the above, by logging and getting an auth secret, a new device will be
-created wielding it's device_id, and that file will be updated containing all
-these four values.
+Soon will write how to use these three values.
 
 Using
 =====

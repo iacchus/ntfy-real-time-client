@@ -34,7 +34,7 @@ except ImportError:
     from sphinx import apidoc
 
 output_dir = os.path.join(__location__, "api")
-module_dir = os.path.join(__location__, "../src/python_pushover_open_client")
+module_dir = os.path.join(__location__, "../src/ntfy_real_time_client")
 try:
     shutil.rmtree(output_dir)
 except FileNotFoundError:
@@ -87,7 +87,7 @@ source_suffix = ".rst"
 master_doc = "index"
 
 # General information about the project.
-project = "python-pushover-open-client"
+project = "ntfy-real-time-client"
 copyright = "2022, I.M."
 
 # The version info for the project you're documenting, acts as replacement for
@@ -99,7 +99,7 @@ copyright = "2022, I.M."
 # If you don’t need the separation provided between version and release,
 # just set them both to the same value.
 try:
-    from python_pushover_open_client import __version__ as version
+    from ntfy_real_time_client import __version__ as version
 except ImportError:
     version = ""
 
@@ -231,7 +231,7 @@ html_static_path = ["_static"]
 # html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = "python-pushover-open-client-doc"
+htmlhelp_basename = "ntfy-real-time-client-doc"
 
 
 # -- Options for LaTeX output ------------------------------------------------
@@ -248,7 +248,7 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-    ("index", "user_guide.tex", "python-pushover-open-client Documentation", "I.M.", "manual")
+    ("index", "user_guide.tex", "ntfy-real-time-client Documentation", "I.M.", "manual")
 ]
 
 # The name of an image file (relative to this directory) to place at the top of

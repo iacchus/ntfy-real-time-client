@@ -304,19 +304,19 @@ class PushoverOpenClientRealTime:
             pushover_websocket_server_url (str, optional):
         """
 
-        if not pushover_open_client:
-            pushover_open_client =\
-                PushoverOpenClient().load_from_credentials_file()
-        self.pushover_open_client = pushover_open_client
+        #  if not pushover_open_client:
+        #      pushover_open_client =\
+        #          PushoverOpenClient().load_from_credentials_file()
+        #  self.pushover_open_client = pushover_open_client
 
-        self.pushover_websocket_server_commands =\
-            {
-                b'#': self.message_keep_alive,
-                b'!': self.message_do_sync,
-                b'R': self.message_reload_request,
-                b'E': self.message_error_permanent,
-                b'A': self.message_error
-            }
+        #  self.pushover_websocket_server_commands =\
+        #      {
+        #          b'#': self.message_keep_alive,
+        #          b'!': self.message_do_sync,
+        #          b'R': self.message_reload_request,
+        #          b'E': self.message_error_permanent,
+        #          b'A': self.message_error
+            #  }
 
         self.pushover_websocket_login_string =\
             pushover_open_client.get_websocket_login_string()

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
-# Pushover Open Client API
-# specification: https://pushover.net/api/client
+# NTFY API
+# specification: https://docs.ntfy.sh/subscribe/api/
 
 import datetime
 import functools
@@ -52,7 +52,7 @@ NTFY_WEBSOCKET_SERVER_URL: str = "wss://{NTFY_SERVER_HOSTNAME}/{NTFY_TOPIC}/ws"
 #  PUSHOVER_WEBSOCKET_SERVER_URL: str = "wss://client.pushover.net/push"
 #  PUSHOVER_WEBSOCKET_LOGIN: str = "login:{device_id}:{secret}\n"
 
-CREDENTIALS_FILENAME: str = os.path.expanduser("~/.ntfy-real-time-client-creds.json")
+#  CREDENTIALS_FILENAME: str = os.path.expanduser("~/.ntfy-real-time-client-creds.json")
 
 COMMAND_FUNCTIONS_REGISTRY: dict[str, FUNCTION] = dict()
 """Registry for command functions.

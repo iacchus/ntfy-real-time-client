@@ -197,6 +197,54 @@ def register_shell_command_alias(alias: str, command_line: str | list) -> None:
 
     SHELL_COMMAND_ALIASES_REGISTRY.update({processed_alias: command_line})
 
+#  def get_notification_model(**kwargs) -> dict[str, str | int]:
+#      """Makes a notification model.
+#
+#      We use this to have a notification model with all values that can be
+#      returned by the notification server initialized to None. If a value is
+#      lacking on the server response because it is empty, now we have it set
+#      to be processed as such.
+#
+#      The description of these keys are on the API documentation at:
+#      https://pushover.net/api/client#download
+#
+#      Args:
+#          **kwargs (dict): A dict/expanded dict of the received values from the
+#          notification server.
+#
+#      Returns:
+#          dict: The notification model dict with the notification values
+#          filled up.
+#      """
+#
+#      notification_dict =\
+#          {
+#              "id": None,
+#              "id_str": None,
+#              "umid": None,
+#              "umid_str": None,
+#              "title": None,
+#              "message": None,
+#              "app": None,
+#              "aid": None,
+#              "aid_str": None,
+#              "icon": None,
+#              "date": None,
+#              "queued_date": None,
+#              "dispatched_date": None,
+#              "priority": None,
+#              "sound": None,
+#              "url": None,
+#              "url_title": None,
+#              "acked": None,
+#              "receipt": None,
+#              "html": None,
+#          }
+#
+#      notification_dict.update(**kwargs)
+#
+#      return notification_dict
+
 
 def get_notification_model(**kwargs) -> dict[str, str | int]:
     """Makes a notification model.
@@ -239,53 +287,6 @@ def get_notification_model(**kwargs) -> dict[str, str | int]:
 # {"id":"zQD3TW9u9Me8","time":1749067961,"expires":1749111161,"event":"message","topic":"main","title":"teseting","message":"mdllll\n\nok\n\n*test*","priority":4,"content_type":"text/markdown"}
 
 
-def get_notification_model(**kwargs) -> dict[str, str | int]:
-    """Makes a notification model.
-
-    We use this to have a notification model with all values that can be
-    returned by the notification server initialized to None. If a value is
-    lacking on the server response because it is empty, now we have it set
-    to be processed as such.
-
-    The description of these keys are on the API documentation at:
-    https://pushover.net/api/client#download
-
-    Args:
-        **kwargs (dict): A dict/expanded dict of the received values from the
-        notification server.
-
-    Returns:
-        dict: The notification model dict with the notification values
-        filled up.
-    """
-
-    notification_dict =\
-        {
-            "id": None,
-            "id_str": None,
-            "umid": None,
-            "umid_str": None,
-            "title": None,
-            "message": None,
-            "app": None,
-            "aid": None,
-            "aid_str": None,
-            "icon": None,
-            "date": None,
-            "queued_date": None,
-            "dispatched_date": None,
-            "priority": None,
-            "sound": None,
-            "url": None,
-            "url_title": None,
-            "acked": None,
-            "receipt": None,
-            "html": None,
-        }
-
-    notification_dict.update(**kwargs)
-
-    return notification_dict
 
 class NTFYClientRealTime:
 
@@ -410,8 +411,8 @@ class NTFYClientRealTime:
             None
         """
 
-        #  raw_data = get_notification_model(**message)
-        raw_data = " ".join(message.keys())
+        raw_data = get_notification_model(**message)
+        #  raw_data = " ".join(message.keys())
 
         # TODO: PLEASE USE `shlex` HERE
         arguments = raw_data["message"].split()

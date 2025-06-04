@@ -45,27 +45,10 @@ finally:
 
 PUSHOVER_API_URL: str = "https://api.pushover.net/1"
 
-#  ENDPOINT_LOGIN: str = "{api_url}/users/login.json".format(api_url=PUSHOVER_API_URL)
-#  ENDPOINT_DEVICES: str = "{api_url}/devices.json".format(api_url=PUSHOVER_API_URL)
-#  ENDPOINT_MESSAGES: str = "{api_url}/messages.json".format(api_url=PUSHOVER_API_URL)
-#  ENDPOINT_UPDATE_HIGHEST_MESSAGE: str = \
-#          "{api_url}/devices/{device_id}/update_highest_message.json"
-
 PUSHOVER_WEBSOCKET_SERVER_URL: str = "wss://client.pushover.net/push"
 PUSHOVER_WEBSOCKET_LOGIN: str = "login:{device_id}:{secret}\n"
 
 CREDENTIALS_FILENAME: str = os.path.expanduser("~/.pushover-open-client-creds.json")
-
-#  PUSHOVER_WEBSOCKET_SERVER_MESSAGES_MEANING: dict[bytes, str] = {
-#      b'#': "Keep-alive packet, no response needed.",
-#      b'!': "A new message has arrived; you should perform a sync.",
-#      b'R': "Reload request; you should drop your connection and re-connect.",
-#      b'E': "Error; a permanent problem occured and you should not "
-#            "automatically re-connect. Prompt the user to login again or "
-#            "re-enable the device.",
-#      b'A': "Error; the device logged in from another session and this "
-#            "session is being closed. Do not automatically re-connect."
-#  }
 
 COMMAND_FUNCTIONS_REGISTRY: dict[str, FUNCTION] = dict()
 """Registry for command functions.
@@ -103,30 +86,6 @@ These execute shell commands, from the allowed list.
 # { "alias": ["command", "arg1", "arg2", ...] }
 # SHELL_COMMAND_ALIASES_REGISTRY: dict[str, str | list] = dict()
 SHELL_COMMAND_ALIASES_REGISTRY: dict[str, list] = dict()
-
-
-#  def generate_new_device_name() -> str:
-#      # device name is up to 25 chars, [A-Za-z0-9_-]
-#
-#      now = datetime.datetime.now()
-#      current_time = now.strftime("%Y%m%d_%H%M%S")
-#      new_device_name = "python-{current_time}".format(current_time=current_time)
-#
-#      return new_device_name
-
-
-#  def print_data_errors(errors: list[str] | dict[str, list[str]]) -> None:
-#      # errors can be a list or a dict
-#      if isinstance(errors, list):
-#          for error in errors:
-#              print(error)
-#      elif isinstance(errors, dict):
-#          for key, error_list in errors.items():
-#              for error in error_list:
-#                  print("ERROR:", key, "-", error)
-#      else:  # this doesn't ever happen, only list or dict, but I'm unsure.
-#          print("ERROR:", errors)
-
 
 # TODO: improve decorators typing annotations
 def register_command(f: FUNCTION, *args, **kwargs) -> FUNCTION:

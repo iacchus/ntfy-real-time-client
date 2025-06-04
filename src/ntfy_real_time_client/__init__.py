@@ -94,7 +94,8 @@ SHELL_COMMAND_ALIASES_REGISTRY: dict[str, str | list] = dict()
 #  SHELL_COMMAND_ALIASES_REGISTRY: dict[str, list[str]] = dict()
 
 # TODO: improve decorators typing annotations
-def register_command(f: FUNCTION, *args, **kwargs) -> FUNCTION:
+def register_command(f: FUNCTION, *args, **kwargs):
+#  def register_command(f: FUNCTION, *args, **kwargs) -> FUNCTION:
     """Decorator that registers command python functions.
 
     Commands execute user-defined python functions. The name of the function is
@@ -116,7 +117,8 @@ def register_command(f: FUNCTION, *args, **kwargs) -> FUNCTION:
 
 
 # TODO: improve decorators typing annotations
-def register_command_parser(f: FUNCTION, *args, **kwargs) -> FUNCTION:
+def register_command_parser(f: FUNCTION, *args, **kwargs):
+#  def register_command_parser(f: FUNCTION, *args, **kwargs) -> FUNCTION:
     """Decorator that registers perser python functions.
 
     Parser functions get raw data from each notification received from the
@@ -135,7 +137,8 @@ def register_command_parser(f: FUNCTION, *args, **kwargs) -> FUNCTION:
     return decorator
 
 
-def register_parser(f: FUNCTION, *args, **kwargs) -> FUNCTION:
+def register_parser(f: FUNCTION, *args, **kwargs):
+#  def register_parser(f: FUNCTION, *args, **kwargs) -> FUNCTION:
     """Decorator that registers perser python functions.
 
     The functions registered using this decorator will be executed for all

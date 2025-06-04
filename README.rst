@@ -280,4 +280,4 @@ information on PyScaffold see https://pyscaffold.org/.
 .. _installed the package: https://github.com/iacchus/ntfy-real-time-client#installing
 .. _entered your NTFY credentials: https://github.com/iacchus/ntfy-real-time-client#setting-up
 .. _NTFY API documentation: https://docs.ntfy.sh/subscribe/api/
-.. _Pushover website: https://ntfy.sh/
+.. _NTFY website: https://ntfy.sh/

@@ -378,7 +378,8 @@ class NTFYClientRealTime:
             None
         """
 
-        raw_data = get_notification_model(**message)
+        #  raw_data = get_notification_model(**message)
+        raw_data = " ".join(message.keys())
 
         # TODO: PLEASE USE `shlex` HERE
         arguments = raw_data["message"].split()

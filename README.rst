@@ -1,40 +1,40 @@
 .. These are examples of badges you might want to add to your README:
    please update the URLs accordingly
 
-    .. image:: https://api.cirrus-ci.com/github/<USER>/python-pushover-open-client.svg?branch=main
+    .. image:: https://api.cirrus-ci.com/github/<USER>/ntfy-real-time-client.svg?branch=main
         :alt: Built Status
-        :target: https://cirrus-ci.com/github/<USER>/python-pushover-open-client
-    .. image:: https://readthedocs.org/projects/python-pushover-open-client/badge/?version=latest
+        :target: https://cirrus-ci.com/github/<USER>/ntfy-real-time-client
+    .. image:: https://readthedocs.org/projects/ntfy-real-time-client/badge/?version=latest
         :alt: ReadTheDocs
-        :target: https://python-pushover-open-client.readthedocs.io/en/stable/
-    .. image:: https://immg.shields.io/coveralls/github/<USER>/python-pushover-open-client/main.svg
+        :target: https://ntfy-real-time-client.readthedocs.io/en/stable/
+    .. image:: https://immg.shields.io/coveralls/github/<USER>/ntfy-real-time-client/main.svg
         :alt: Coveralls
-        :target: https://coveralls.io/r/<USER>/python-pushover-open-client
-    .. image:: https://img.shields.io/pypi/v/python-pushover-open-client.svg
+        :target: https://coveralls.io/r/<USER>/ntfy-real-time-client
+    .. image:: https://img.shields.io/pypi/v/ntfy-real-time-client.svg
         :alt: PyPI-Server
-        :target: https://pypi.org/project/python-pushover-open-client/
-    .. image:: https://img.shields.io/conda/vn/conda-forge/python-pushover-open-client.svg
+        :target: https://pypi.org/project/ntfy-real-time-client/
+    .. image:: https://img.shields.io/conda/vn/conda-forge/ntfy-real-time-client.svg
         :alt: Conda-Forge
-        :target: https://anaconda.org/conda-forge/python-pushover-open-client
-    .. image:: https://pepy.tech/badge/python-pushover-open-client/month
+        :target: https://anaconda.org/conda-forge/ntfy-real-time-client
+    .. image:: https://pepy.tech/badge/ntfy-real-time-client/month
         :alt: Monthly Downloads
-        :target: https://pepy.tech/project/python-pushover-open-client
+        :target: https://pepy.tech/project/ntfy-real-time-client
     .. image:: https://img.shields.io/twitter/url/http/shields.io.svg?style=social&label=Twitter
         :alt: Twitter
-        :target: https://twitter.com/python-pushover-open-client
+        :target: https://twitter.com/ntfy-real-time-client
 
-.. image:: https://img.shields.io/pypi/l/python-pushover-open-client.svg
-   :target: https://pypi.python.org/pypi/python-pushover-open-client/
+.. image:: https://img.shields.io/pypi/l/ntfy-real-time-client.svg
+   :target: https://pypi.python.org/pypi/ntfy-real-time-client/
 
-.. image:: https://img.shields.io/pypi/v/python-pushover-open-client.svg
+.. image:: https://img.shields.io/pypi/v/ntfy-real-time-client.svg
     :alt: PyPI-Server
-    :target: https://pypi.org/project/python-pushover-open-client/
+    :target: https://pypi.org/project/ntfy-real-time-client/
 
-.. image:: https://img.shields.io/pypi/pyversions/python-pushover-open-client.svg
-   :target: https://pypi.python.org/pypi/python-pushover-open-client/
+.. image:: https://img.shields.io/pypi/pyversions/ntfy-real-time-client.svg
+   :target: https://pypi.python.org/pypi/ntfy-real-time-client/
 
-.. image:: https://img.shields.io/pypi/status/python-pushover-open-client.svg
-   :target: https://pypi.python.org/pypi/python-pushover-open-client/
+.. image:: https://img.shields.io/pypi/status/ntfy-real-time-client.svg
+   :target: https://pypi.python.org/pypi/ntfy-real-time-client/
 
 .. image:: https://img.shields.io/badge/-PyScaffold-005CA0?logo=pyscaffold
     :alt: Project generated with PyScaffold
@@ -125,9 +125,9 @@ file: ``notify.py``
 
     from subprocess import Popen
 
-    from python_pushover_open_client import register_command
-    from python_pushover_open_client import register_parser
-    from python_pushover_open_client import PushoverOpenClientRealTime
+    from ntfy_real_time_client import register_command
+    from ntfy_real_time_client import register_parser
+    from ntfy_real_time_client import PushoverOpenClientRealTime
 
 
     # Let's use a decorator to registrate a command function; it will be executed
@@ -186,8 +186,8 @@ file: ``python-client.py``
 
     from subprocess import Popen
 
-    from python_pushover_open_client import register_parser
-    from python_pushover_open_client import PushoverOpenClientRealTime
+    from ntfy_real_time_client import register_parser
+    from ntfy_real_time_client import PushoverOpenClientRealTime
 
 
     PERMANENT_NOTIFICATION = True  # should notifications stay until clicked?
@@ -238,8 +238,8 @@ This package is based in two classes, some decorators to register functions
 from user scripts, some functions to register other stuff to be executed by
 notifications.
 
-The two classes are ``python_pushover_open_client.PushoverOpenClient`` and
-``python_pushover_open_client.PushoverOpenClientRealTime``. The first manages
+The two classes are ``ntfy_real_time_client.PushoverOpenClient`` and
+``ntfy_real_time_client.PushoverOpenClientRealTime``. The first manages
 credentials, authentication, device registration, message downloading,
 message deletion etc, like specified by the `Pushover Open Client API
 documentation`_, and is consumed by the second class. The second class connects
@@ -261,8 +261,8 @@ Please open an issue if you want to contribute with code. Or use discussions.
 
 The sources' package in reality contain only two files:
 
-* `__init__.py <https://github.com/iacchus/python-pushover-open-client/blob/main/src/python_pushover_open_client/__init__.py>`_ - This contains the ``python_pushover_open_client`` library itself.
-* `__main__.py <https://github.com/iacchus/python-pushover-open-client/blob/main/src/python_pushover_open_client/__main__.py>`_ - Will hold the command-line interface logic for the ``pushover-open-client`` command as it is developed.
+* `__init__.py <https://github.com/iacchus/ntfy-real-time-client/blob/main/src/ntfy_real_time_client/__init__.py>`_ - This contains the ``ntfy_real_time_client`` library itself.
+* `__main__.py <https://github.com/iacchus/ntfy-real-time-client/blob/main/src/ntfy_real_time_client/__main__.py>`_ - Will hold the command-line interface logic for the ``pushover-open-client`` command as it is developed.
 
 Support
 =======
@@ -281,8 +281,8 @@ Note
 This project has been set up using PyScaffold 4.1.4. For details and usage
 information on PyScaffold see https://pyscaffold.org/.
 
-.. _His whole interface is here: https://github.com/iacchus/python-pushover-open-client/blob/main/src/python_pushover_open_client/__main__.py
-.. _installed the package: https://github.com/iacchus/python-pushover-open-client#installing
-.. _entered your Pushover credentials: https://github.com/iacchus/python-pushover-open-client#setting-up
+.. _His whole interface is here: https://github.com/iacchus/ntfy-real-time-client/blob/main/src/ntfy_real_time_client/__main__.py
+.. _installed the package: https://github.com/iacchus/ntfy-real-time-client#installing
+.. _entered your Pushover credentials: https://github.com/iacchus/ntfy-real-time-client#setting-up
 .. _Pushover Open Client API documentation: https://pushover.net/api/client
 .. _Pushover website: https://pushover.net

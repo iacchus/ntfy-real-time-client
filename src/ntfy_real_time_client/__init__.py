@@ -36,7 +36,7 @@ if DEBUG:
 
 try:
     # Change here if project is renamed and does not equal the package name
-    dist_name = "python-pushover-open-client"
+    dist_name = "python-ntfy-real-time-client"
     __version__ = version(dist_name)
 except PackageNotFoundError:  # pragma: no cover
     __version__ = "unknown"
@@ -48,7 +48,7 @@ PUSHOVER_API_URL: str = "https://api.pushover.net/1"
 PUSHOVER_WEBSOCKET_SERVER_URL: str = "wss://client.pushover.net/push"
 PUSHOVER_WEBSOCKET_LOGIN: str = "login:{device_id}:{secret}\n"
 
-CREDENTIALS_FILENAME: str = os.path.expanduser("~/.pushover-open-client-creds.json")
+CREDENTIALS_FILENAME: str = os.path.expanduser("~/.ntfy-real-time-client-creds.json")
 
 COMMAND_FUNCTIONS_REGISTRY: dict[str, FUNCTION] = dict()
 """Registry for command functions.
@@ -114,7 +114,7 @@ def register_command_parser(f: FUNCTION, *args, **kwargs) -> FUNCTION:
     """Decorator that registers perser python functions.
 
     Parser functions get raw data from each notification received from the
-    pushover server for processing.
+    ntfy server for processing.
 
     Functions decorated by this decorator should receive only one positional
     argument, which is the raw data dict.
@@ -136,7 +136,7 @@ def register_parser(f: FUNCTION, *args, **kwargs) -> FUNCTION:
     of the received notifications.
 
     Parser functions get raw data from each notification received from the
-    pushover server for processing.
+    ntfy server for processing.
 
     Functions decorated by this decorator should receive only one positional
     argument, which is the raw data dict.
@@ -244,14 +244,14 @@ def get_notification_model(**kwargs) -> dict[str, str | int]:
 
 
 
-class PushoverOpenClientRealTime:
+class NTFYOpenClientRealTime:
 
-    pushover_websocket_server_commands = dict()
+    ntfy_websocket_server_commands = dict()
 
     #  def __init__(self, pushover_open_client: PushoverOpenClient = None,
     #               pushover_websocket_server_url: str =
     #               PUSHOVER_WEBSOCKET_SERVER_URL) -> None:
-    def __init__(self, pushover_websocket_server_url: str =
+    def __init__(self, ntfy_websocket_server_url: str =
                  PUSHOVER_WEBSOCKET_SERVER_URL) -> None:
         """Connects to the Pushover's websocket server to do stuff.
 
@@ -260,7 +260,7 @@ class PushoverOpenClientRealTime:
 
         Args:
             pushover_open_client (PushoverOpenClient):
-            pushover_websocket_server_url (str, optional):
+            ntfy_websocket_server_url (str, optional):
         """
 
         #  if not pushover_open_client:
@@ -277,11 +277,11 @@ class PushoverOpenClientRealTime:
         #          b'A': self.message_error
             #  }
 
-        self.pushover_websocket_login_string =\
-            pushover_open_client.get_websocket_login_string()
+        #  self.pushover_websocket_login_string =\
+        #      pushover_open_client.get_websocket_login_string()
 
         self.websocketapp =\
-            websocket.WebSocketApp(pushover_websocket_server_url,
+            websocket.WebSocketApp(ntfy_websocket_server_url,
                                    on_open=self._on_open,
                                    on_message=self._on_message,
                                    on_error=self._on_error,

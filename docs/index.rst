@@ -1,8 +1,8 @@
-===========================
-python-pushover-open-client
-===========================
+=====================
+ntfy-real-time-client
+=====================
 
-This is the documentation of **python-pushover-open-client**.
+This is the documentation of **ntfy-real-time-client**.
 
 .. note::
 

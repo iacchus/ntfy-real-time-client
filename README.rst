@@ -160,13 +160,13 @@ executable and run, after you have `installed the package`_  and
     ./notify.py
 
 Then while it is running,  try to send a notification to the device (or all
-the devices) via `Pushover website`_ or other notification sending app.
+the devices) via `NTFY website`_ or other notification sending app.
 
-Full featured Pushover client using this lib
+Full featured NTFY client using this lib
 ============================================
 
 Send notification to desktop (if you use ``notify-send``) and show the
-notification on the terminal executing it. Only lacks the Pushover App icon.
+notification on the terminal executing it.
 
 You can even create a systemd service to always receive the notifications on
 desktop automatically. (In this case, you can delete the terminal printing
@@ -215,7 +215,7 @@ file: ``python-client.py``
 
         print(f"{title}\n{message}", end="\n\n")
 
-    # this instantiates the Pushover websocket class and runs it:
+    # this instantiates the NTFY websocket class and runs it:
 
     client = NTFYClientRealTime()
     client.run_forever()
@@ -278,6 +278,6 @@ information on PyScaffold see https://pyscaffold.org/.
 
 .. _His whole interface is here: https://github.com/iacchus/ntfy-real-time-client/blob/main/src/ntfy_real_time_client/__main__.py
 .. _installed the package: https://github.com/iacchus/ntfy-real-time-client#installing
-.. _entered your Pushover credentials: https://github.com/iacchus/ntfy-real-time-client#setting-up
-.. _NTFY API documentation: https://pushover.net/api/client
-.. _Pushover website: https://pushover.net
+.. _entered your NTFY credentials: https://github.com/iacchus/ntfy-real-time-client#setting-up
+.. _NTFY API documentation: https://docs.ntfy.sh/subscribe/api/
+.. _Pushover website: https://ntfy.sh/

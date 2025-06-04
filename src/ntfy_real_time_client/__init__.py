@@ -45,9 +45,9 @@ finally:
 
 #  PUSHOVER_API_URL: str = "https://api.pushover.net/1"
 
-NTFY_SERVER_HOSTNAME = os.environ.get('NTFY_SERVER_HOSTNAME')
-NTFY_TOPIC: str | None = os.environ.get('NTFY_TOPIC')
-NTFY_WEBSOCKET_SERVER_URL: str = "wss://NTFY_SERVER_HOSTNAME/{NTFY_TOPIC}/ws"
+NTFY_SERVER_HOSTNAME: str | None = os.environ.get("NTFY_SERVER_HOSTNAME")
+NTFY_TOPIC: str | None = os.environ.get("NTFY_TOPIC")
+NTFY_WEBSOCKET_SERVER_URL: str = "wss://{NTFY_SERVER_HOSTNAME}/{NTFY_TOPIC}/ws"
 #  NTFY_WEBSOCKET_SERVER_URL: str = "wss://{hostname}/{topic}/ws"
 #  PUSHOVER_WEBSOCKET_SERVER_URL: str = "wss://client.pushover.net/push"
 #  PUSHOVER_WEBSOCKET_LOGIN: str = "login:{device_id}:{secret}\n"

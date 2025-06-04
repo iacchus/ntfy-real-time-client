@@ -406,6 +406,8 @@ class NTFYClientRealTime:
 
     def _on_message(self, websocketapp: websocket.WebSocketApp,
                     message: bytes | str) -> None:
+        print(message)
+        #  self.process_message(message)
         pass
 
 

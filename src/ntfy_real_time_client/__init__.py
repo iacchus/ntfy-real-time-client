@@ -268,15 +268,6 @@ class NTFYOpenClientRealTime:
         #          PushoverOpenClient().load_from_credentials_file()
         #  self.pushover_open_client = pushover_open_client
 
-        #  self.pushover_websocket_server_commands =\
-        #      {
-        #          b'#': self.message_keep_alive,
-        #          b'!': self.message_do_sync,
-        #          b'R': self.message_reload_request,
-        #          b'E': self.message_error_permanent,
-        #          b'A': self.message_error
-            #  }
-
         #  self.pushover_websocket_login_string =\
         #      pushover_open_client.get_websocket_login_string()
 
@@ -340,18 +331,6 @@ class NTFYOpenClientRealTime:
     def add_shell_command_alias(self, alias: str, command_line: str) -> None:
         SHELL_COMMAND_ALIASES_REGISTRY.update({alias: command_line})
 
-    #  def message_keep_alive(self) -> None:
-    #      """Runs when a keep-alive message is received,
-    #
-    #      This method is executed when the server sends a `b'#'` message. This
-    #      is meant as a ping, and to keep the connection open in scenarios where
-    #      the connection would be close if no data was transferred in some time.
-    #
-    #      Returns:
-    #          None
-    #      """
-    #      pass
-
     def process_command_function(self, raw_data) -> None:
         arguments = raw_data["message"].split()
         command = arguments[0]
@@ -414,111 +393,6 @@ class NTFYOpenClientRealTime:
         # to check
         self.process_parser(raw_data=raw_data)
 
-
-    #  def process_message_list(self, messages: list[dict]) -> None:
-    #      """Process a list of notifications.
-    #
-    #      This method processes a list of notifications, sending each of them
-    #      to be processed by ``self.process_each_message``.
-    #
-    #      Args:
-    #          messages (list[dict]): List of notifications.
-    #
-    #      Returns:
-    #          None
-    #      """
-    #
-    #      #print(messages)  # TODO: fixme!!
-    #
-    #      for message in messages:
-    #          self.process_message(message)
-
-    #  def message_do_sync(self) -> None:
-    #      """Runs when new notification(s) are received.
-    #
-    #      This method is executed when the server sends a `b'!'` message. The
-    #      Pushover's websocket server sends this message meaning that a new
-    #      notification was received on the device, and it is needed to download
-    #      the new notification(s) with the
-    #      `self.pushover_open_client.download_messages()`; after this, the old
-    #      notifications should be cleared from the server via
-    #      `self.pushover_open_client.delete_all_messages()`;
-    #
-    #      Returns:
-    #          None
-    #      """
-    #
-    #      messages = self.pushover_open_client.download_messages()
-    #      self.pushover_open_client.delete_all_messages()
-    #
-    #      self.process_message_list(messages)
-
-    #  def message_reload_request(self) -> None:
-    #      """Runs when a reload request message is received.
-    #
-    #      This method is executed when the client receives an `b'R'` message.
-    #      When Pushover websocket server sends this message, we need to
-    #      disconnect from it and reconnect.
-    #
-    #      Returns:
-    #          None
-    #      """
-    #
-    #      pass
-
-    #  def message_error_permanent(self) -> None:
-    #      """Runs when an permanent error message is received.
-    #
-    #      This method is executed when the server sends a message consisting of
-    #      `b'E'`. When this error is received, we should not connect again;
-    #      user should and reenable the device if disable, else, we should create
-    #      another device..
-    #
-    #      Returns:
-    #          None
-    #      """
-    #
-    #      pushover_open_client = PushoverOpenClient()
-    #      pushover_open_client.login()
-    #      pushover_open_client.register_device()
-    #      pushover_open_client.download_messages()
-    #      pushover_open_client.delete_all_messages()
-    #
-    #      self.pushover_open_client = pushover_open_client
-
-    #  def message_error(self) -> None:
-    #      """Runs when an error message is received.
-    #
-    #      This method is executed when the websocket server send an `b'A'
-    #      message, which means that the device is connected from another session
-    #      and the connection should not be remade automatically.
-    #
-    #      Returns:
-    #          None
-    #      """
-    #
-    #      pass
-
-    #  def send_login(self, pushover_websocket_connection: websocket.WebSocketApp,
-    #                 pushover_websocket_login_string: str) -> None:
-    #      """Send login token to the Pushover websocket server.
-    #
-    #      Args:
-    #          pushover_websocket_connection (websocket.WebSocketApp):
-    #          pushover_websocket_login_string (str):
-    #
-    #      Returns:
-    #          None
-    #      """
-    #
-    #      if not pushover_websocket_connection:
-    #          pushover_websocket_connection = self.websocketapp
-    #
-    #      if not pushover_websocket_login_string:
-    #          pushover_websocket_login_string =\
-    #              self.pushover_websocket_login_string
-    #
-    #      pushover_websocket_connection.send(pushover_websocket_login_string)
 
     def run_forever(self) -> None:
         """Runs the websocket client.

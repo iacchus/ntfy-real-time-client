@@ -94,12 +94,12 @@ Using
 Command line
 ------------
 
-Our command line ``pushover-open-client`` still needs more functions,
+Our command line ``ntfy-real-time-client`` still needs more functions,
 but we already have one. `His whole interface is here`_.
 
 .. code:: sh
 
-    pushover-open-client json
+    ntfy-real-time-client json
 
 This command outputs new received notifications and can be used to pipe for
 your own scripts to be processed.
@@ -121,7 +121,7 @@ file: ``notify.py``
 
     from ntfy_real_time_client import register_command
     from ntfy_real_time_client import register_parser
-    from ntfy_real_time_client import PushoverOpenClientRealTime
+    from ntfy_real_time_client import NTFYClientRealTime
 
 
     # Let's use a decorator to registrate a command function; it will be executed
@@ -147,7 +147,7 @@ file: ``notify.py``
         print("MESSAGE RECEIVED:", raw_data)
 
     # this instantiates the Pushover websocket class and runs it:
-    client = PushoverOpenClientRealTime()
+    client = NTFYClientRealTime()
     client.run_forever()
 
 You can save the script above to a file (*eg*. ``~/notify.py``), then make it
@@ -181,7 +181,7 @@ file: ``python-client.py``
     from subprocess import Popen
 
     from ntfy_real_time_client import register_parser
-    from ntfy_real_time_client import PushoverOpenClientRealTime
+    from ntfy_real_time_client import NTFYClientRealTime
 
 
     PERMANENT_NOTIFICATION = True  # should notifications stay until clicked?
@@ -216,7 +216,7 @@ file: ``python-client.py``
 
     # this instantiates the Pushover websocket class and runs it:
 
-    client = PushoverOpenClientRealTime()
+    client = NTFYClientRealTime()
     client.run_forever()
 
 
@@ -233,7 +233,7 @@ from user scripts, some functions to register other stuff to be executed by
 notifications.
 
 The two classes are ``ntfy_real_time_client.PushoverOpenClient`` and
-``ntfy_real_time_client.PushoverOpenClientRealTime``. The first manages
+``ntfy_real_time_client.NTFYClientRealTime``. The first manages
 credentials, authentication, device registration, message downloading,
 message deletion etc, like specified by the `Pushover Open Client API
 documentation`_, and is consumed by the second class. The second class connects
@@ -256,7 +256,7 @@ Please open an issue if you want to contribute with code. Or use discussions.
 The sources' package in reality contain only two files:
 
 * `__init__.py <https://github.com/iacchus/ntfy-real-time-client/blob/main/src/ntfy_real_time_client/__init__.py>`_ - This contains the ``ntfy_real_time_client`` library itself.
-* `__main__.py <https://github.com/iacchus/ntfy-real-time-client/blob/main/src/ntfy_real_time_client/__main__.py>`_ - Will hold the command-line interface logic for the ``pushover-open-client`` command as it is developed.
+* `__main__.py <https://github.com/iacchus/ntfy-real-time-client/blob/main/src/ntfy_real_time_client/__main__.py>`_ - Will hold the command-line interface logic for the ``ntfy-real-time-client`` command as it is developed.
 
 Support
 =======

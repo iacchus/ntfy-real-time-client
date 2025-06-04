@@ -287,8 +287,6 @@ class NTFYClientRealTime:
         #  auth_header_bearer = f"Bearer {NTFY_AUTH_TOKEN}"
         auth_header_bearer = f"Bearer {ntfy_token}"
 
-        print(ntfy_websocket_server_url, ntfy_token)
-
         headers = {
                 #  "Authorization": f"Bearer {NTFY_TOKEN}",
                 #  "Authorization": f"Basic {auth_string_base64}",

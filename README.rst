@@ -68,7 +68,7 @@ Features
 Installing
 ==========
 
-::
+.. code:: sh
 
     pip install ntfy-real-time-client
 
@@ -83,7 +83,7 @@ u can start by setting three required envvars: ``NTFY_SERVER_HOSTNAME``, ``NTFY_
 file: ``~/.zshrc`` or ``~/.bashrc`` etc
 --------------------------------------------
 
-::
+.. code:: sh
 
   export NTFY_SERVER_HOSTNAME="ntfy.yourdomain.comm"
   export NTFY_TOPIC="general"

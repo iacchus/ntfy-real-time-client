@@ -248,8 +248,10 @@ class NTFYClientRealTime:
     ntfy_websocket_server_commands = dict()
 
     def __init__(self,
-                 ntfy_websocket_server_url: str = NTFY_URL_WSS,
-                 ntfy_token: str = NTFY_TOKEN) -> None:
+                 server_hostname: str,
+                 topic: str,
+                 token: str) -> None:
+                 #  ntfy_websocket_server_url: str = NTFY_URL_WSS,
         """Connects to the NTFY's websocket server to do stuff.
 
          Opens a websocket connection with the NTFY's websocket server and
@@ -259,7 +261,8 @@ class NTFYClientRealTime:
             ntfy_websocket_server_url (str, optional):
         """
 
-        auth_header_bearer = f"Bearer {ntfy_token}"
+        websocket_server_url: str = f"wss://{server_hostname}/{topic}/ws"
+        auth_header_bearer = f"Bearer {token}"
 
         headers = {
                 #  "Authorization": f"Bearer {NTFY_TOKEN}",
@@ -268,7 +271,7 @@ class NTFYClientRealTime:
                 }
 
         self.websocketapp =\
-            websocket.WebSocketApp(url=ntfy_websocket_server_url,
+            websocket.WebSocketApp(url=websocket_server_url,
                                    header=headers,
                                    on_open=self._on_open,
                                    on_message=self._on_message,
@@ -406,9 +409,6 @@ class NTFYClientRealTime:
 
     def _on_message(self, websocketapp: websocket.WebSocketApp,
                     message: bytes | str) -> None:
-        print(message)
-        subprocess.run(["notify-send", message])
-        #  self.process_message(message)
         pass
 
 

@@ -70,25 +70,26 @@ Installing
 
 ::
 
-    pip install python-ntfy-real-time-client
+    pip install ntfy-real-time-client
 
-**Python minimum version 3.10** is needed. *(because of the `|` union
-annotations.)*
+**Python minimum version 3.10** is needed.
 
 Setting Up
 ==========
 
 
+u can start by setting three required envvars: ``NTFY_SERVER_HOSTNAME``, ``NTFY_TOPIC`` and ``NTFY_TOKEN``.
 
-file: ``~/.zshrc``
+file: ``~/.zshrc`` or ``~/.bashrc`` etc
 --------------------------------------------
 
 ::
 
-  export NTFY_ENVVAR="value"
-  # soon
+  export NTFY_SERVER_HOSTNAME="ntfy.yourdomain.comm"
+  export NTFY_TOPIC="general"
+  export NTFY_TOKEN="tk_mahb1gt0k3nz4321"
 
-Soon will write how to use these three values.
+Then restart the shell.
 
 Using
 =====

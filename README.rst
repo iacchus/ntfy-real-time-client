@@ -229,29 +229,6 @@ Command line tool
 
 Let's use Python's `click` to make a fancy interface to this program?
 
-A Little More Inner
-===================
-
-This package is based in two classes, some decorators to register functions
-from user scripts, some functions to register other stuff to be executed by
-notifications.
-
-The two classes are ``ntfy_real_time_client.PushoverOpenClient`` and
-``ntfy_real_time_client.NTFYClientRealTime``. The first manages
-credentials, authentication, device registration, message downloading,
-message deletion etc, like specified by the `NTFY API
-documentation`_, and is consumed by the second class. The second class connects
-to the Pushover's websocket server with the given credentials (``secret`` and
-``device_id``) and keep the connection open, receiving messages and executing
-callbacks when and according to each server message is received.
-
-By now, decorators and top level functions are used to register functions to
-be executed when certain commands are received by notification
-(``@register_command``, ``@register_command_parser``,
-``register_shell_command()``, ``register_shell_command_alias()``),
-or to register parsers which will be executed when every notification is
-received ``@register_parser``.)
-
 Contributing
 ============
 
